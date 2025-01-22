@@ -14,11 +14,11 @@ final class ColdBootVisit: Visit {
 
         if let response = options.response, response.isSuccessful, let body = response.responseHTML {
           DispatchQueue.main.async {
-            this.navigation = webView.loadHTMLString(body, baseURL: this.location)
+            self.navigation = webView.loadHTMLString(body, baseURL: self.location)
           }
         } else {
           DispatchQueue.main.async {
-            this.navigation = webView.load(URLRequest(url: this.location))
+            self.navigation = webView.load(URLRequest(url: self.location))
           }
         }
 
