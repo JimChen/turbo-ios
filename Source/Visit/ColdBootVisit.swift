@@ -13,11 +13,11 @@ final class ColdBootVisit: Visit {
         bridge.pageLoadDelegate = self
 
         if let response = options.response, response.isSuccessful, let body = response.responseHTML {
-          DispatchQueue.global(gps: .background).async {
+          DispatchQueue.global(qos: .background).async {
             self.navigation = self.webView.loadHTMLString(body, baseURL: self.location)
           }
         } else {
-          DispatchQueue.global(gps: .background).async {
+          DispatchQueue.global(qos: .background).async {
             self.navigation = self.webView.load(URLRequest(url: self.location))
           }
         }
