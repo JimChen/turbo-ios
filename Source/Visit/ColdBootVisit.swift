@@ -13,13 +13,13 @@ final class ColdBootVisit: Visit {
         bridge.pageLoadDelegate = self
 
         if let response = options.response, response.isSuccessful, let body = response.responseHTML {
-          DispatchQueue.global(qos: .background).async {
-            self.navigation = self.webView.loadHTMLString(body, baseURL: self.location)
-          }
+          //DispatchQueue.global(qos: .background).async {
+          self.navigation = self.webView.loadHTMLString(body, baseURL: self.location)
+          //}
         } else {
-          DispatchQueue.global(qos: .background).async {
-            self.navigation = self.webView.load(URLRequest(url: self.location))
-          }
+          //DispatchQueue.global(qos: .background).async {
+          self.navigation = self.webView.load(URLRequest(url: self.location))
+          //}
         }
 
         delegate?.visitDidStart(self)
